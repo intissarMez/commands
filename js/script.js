@@ -1,16 +1,18 @@
-angular.module('cmdPalette', [])
+angular.module('cmdPalette', ['ngSanitize'])
 
-.controller('MainController', function($scope, $http,$filter) {
+.controller('MainController', function($scope, $http, $filter) {
     $http.get('js/builtInCmd.json').success(function(data) {
       $scope.commands = data;
       $scope.filterData = function (query){
       $scope.commands = $filter('filter')(data, query)};
+
 
     }).error(function(error) {
         studio.extension.quitDialog();
     });
 
    $scope.closeDialog = function($event) {
+
         if (event.keyCode === 27) {
             studio.extension.quitDialog();
         }
@@ -29,11 +31,11 @@ angular.module('cmdPalette', [])
   };
 })
 
-.filter('highlight', function() {
+.filter('highlight', function( $sanitize) {
     return function(input, selectedWord) {
       if(selectedWord) {
         var pattern = new RegExp(selectedWord, "gi");
-        return input.replace(pattern, "<span class='highlighted'>" + selectedWord + "</span>");
+        return input.replace(pattern, $sanitize("<span class='highlighted'>" + selectedWord + "</span>"));
       }
       else {
         return input;

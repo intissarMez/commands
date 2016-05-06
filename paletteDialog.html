@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body ng-app="cmdPalette" ng-controller="MainController" ng-keydown="closeDialog($event)">
+<body ng-app="cmdPalette" ng-controller="MainController"  ng-keydown="closeDialog($event)">
  <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top pt-10">
            <div class="container">
@@ -19,20 +19,22 @@
           <div class="panel panel-default">
             <ul class="list-group" ng-repeat="cmd in commands">
               <a href="#" ng-click="sendCommand(cmd.name)" class="list-group-item">
-                <span ng-bind-html-unsafe="(cmd.belongsTo) + ' : ' + (cmd.name) | highlight : query "></span>
+                  <span ng-bind-html="cmd.belongsTo + ' : ' + cmd.name | highlight : query"></span>
                   <kbd ng-hide="!cmd.keybinding" class="fr">
-                    <span ng-bind-template="{{cmd.keybinding | commandKey}}"></span>
+                    <span ng-bind-html="cmd.keybinding | commandKey"></span>
                   </kbd>
 
               </a>
             </ul>
           </div>
-          <div ng-show="!commands.length" class="text-center">No Matches Found</div>
+          <span ng-show="!commands.length" ng-bind-html="'No Matches Found'"></span>
      </div>
   </div>
 
 </div>
+  <script src="js/bind-polyfill.js"></script>
   <script src="js/angular.min.js"></script>
+  <script src="js/angular-sanitize.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
