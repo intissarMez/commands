@@ -1,17 +1,20 @@
 angular.module('cmdPalette', ['ngSanitize'])
 
+/*Disabling Debug Data*/
+.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(false);
+}])
+
 .controller('MainController', function($scope, $http, $filter) {
     $http.get('js/builtInCmd.json').success(function(data) {
       $scope.commands = data;
       $scope.filterData = function (query){
       $scope.commands = $filter('filter')(data, query)};
-
-
-    }).error(function(error) {
+      }).error(function(error) {
         studio.extension.quitDialog();
     });
 
-   $scope.closeDialog = function($event) {
+    $scope.closeDialog = function($event) {
 
         if (event.keyCode === 27) {
             studio.extension.quitDialog();
@@ -21,7 +24,7 @@ angular.module('cmdPalette', ['ngSanitize'])
     $scope.sendCommand = function(cmd) {
       studio.extension.quitDialog();
       studio.sendCommand(cmd);
-      }
+    }
 })
 
 

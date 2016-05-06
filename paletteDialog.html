@@ -20,14 +20,14 @@
             <ul class="list-group" ng-repeat="cmd in commands">
               <a href="#" ng-click="sendCommand(cmd.name)" class="list-group-item">
                   <span ng-bind-html="cmd.belongsTo + ' : ' + cmd.name | highlight : query"></span>
-                  <kbd ng-hide="!cmd.keybinding" class="fr">
+                  <kbd ng-if="cmd.keybinding" class="fr">
                     <span ng-bind-html="cmd.keybinding | commandKey"></span>
                   </kbd>
 
               </a>
             </ul>
           </div>
-          <span ng-show="!commands.length" ng-bind-html="'No Matches Found'"></span>
+          <span ng-if="!commands.length" ng-bind-html="'No Matches Found'"></span>
      </div>
   </div>
 
