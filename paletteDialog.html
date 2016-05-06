@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Command Palette</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="cmdPalette" ng-controller="MainController" ng-keydown="closeDialog($event)">
+ <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top pt-10">
+           <div class="container">
+             <input type="text" class="form-control" placeholder="Search for..." ng-change="filterData(query);" ng-model="query" autofocus>
+           </div>
+        </nav>
+
+  <div class="row pt-70">
+     <div class="col-md-12">
+          <div class="panel panel-default">
+            <ul class="list-group" ng-repeat="cmd in commands">
+              <a href="#" ng-click="sendCommand(cmd.name)" class="list-group-item">
+                <span ng-bind-html-unsafe="(cmd.belongsTo) + ' : ' + (cmd.name) | highlight : query "></span>
+                  <kbd ng-hide="!cmd.keybinding" class="fr">
+                    <span ng-bind-template="{{cmd.keybinding | commandKey}}"></span>
+                  </kbd>
+
+              </a>
+            </ul>
+          </div>
+          <div ng-show="!commands.length" class="text-center">No Matches Found</div>
+     </div>
+  </div>
+
+</div>
+  <script src="js/angular.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

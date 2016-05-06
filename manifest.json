@@ -1,0 +1,22 @@
+{
+	"extension": {
+		"name": "Command Palette",
+		"version": "1.0.0",
+		"description": "Open the command palette instead of getting lost in the menu",
+		"icon": "icon.png",
+		"senders": [
+			{
+				"location": "studioToolbar",
+				"icon": "icon.png",
+				"actionName": "getCommandPalette"
+			}
+		],
+		"actions": [
+			{
+				"name": "Command Palette",
+				"title": "Command Palette"
+			}
+		],
+		"lifetime": "application_lifetime"
+	}
+}
