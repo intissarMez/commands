@@ -13,8 +13,14 @@
 		],
 		"actions": [
 			{
-				"name": "Command Palette",
-				"title": "Command Palette"
+				"name": "getCommandPalette",
+				"title": "Command Palette",
+				"shortcut": {
+					"shortcutKey": "yes",
+					"alternateKey": "no",
+					"shiftKey": "yes",
+					"key": "p"
+				}
 			}
 		],
 		"lifetime": "application_lifetime"
