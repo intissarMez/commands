@@ -20,7 +20,6 @@
             <ul class="list-group" >
               <a href="#" ng-repeat="cmd in commands track by $index" ng-click="sendCommand(cmd.name)" class="list-group-item" ng-class="{'selected' : $index == selectedCommand}">
 
-                  <input type="text" ng-show="false"  id="command-{{$index}}" value="{{cmd.name}}" />
                   <span ng-bind-html="cmd.belongsTo + ' : ' + cmd.name | highlight : query"></span>
                   <kbd ng-if="cmd.keybinding" class="fr">
                     <span ng-bind-html="cmd.keybinding | commandKey"></span>

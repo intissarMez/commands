@@ -1,20 +1,9 @@
 @import url("bootstrap.min.css");
-.panel > .list-group {
-    margin-bottom: 0;
-}
-.panel > .list-group .list-group-item {
-    border-width: 1px 0;
-}
 .panel > .list-group .list-group-item:first-child {
     border-top-right-radius: 0 !important;
     border-top-left-radius: 0 !important;
 }
-.panel > .list-group .list-group-item:last-child {
-    border-bottom: 0;
-}
-.panel-heading + .list-group .list-group-item:first-child {
-    border-top-width: 0;
-}
+
 .pt-10 {
     padding-top: 10px !important;
 }

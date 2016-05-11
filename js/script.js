@@ -46,16 +46,20 @@ var extension = angular.module('cmdPalette', ['ngSanitize']);
 
 
    txtInput.onkeydown = function (event) {
-      var currentCommand = document.getElementById('command-' +$scope.selectedCommand).value;
-      switch (event.keyIdentifier) {
-        case 'Enter':
-          exec(currentCommand);
+
+        switch (event.keyIdentifier) {
+
+       case 'Enter':
+
+          exec($scope.commands[$scope.selectedCommand].name);
           break;
-        case "Up":
+
+      case "Up":
           event.preventDefault();
           $scope.selectedCommand && $scope.selectedCommand--;
           break;
-        case "Down":
+
+      case "Down":
           event.preventDefault();
           ($scope.selectedCommand < currentItems.length - 1 ) && $scope.selectedCommand++;
           break;
