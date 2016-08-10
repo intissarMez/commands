@@ -1,11 +1,19 @@
 var extension = angular.module('cmdPalette', ['ngSanitize']);
 
-  /*Disabling Debug Data*/
-  extension.config(['$compileProvider', function ($compileProvider) {
-    $compileProvider.debugInfoEnabled(false);
-  }]);
+  /*Disabling or Enabling Debug Data based on user preferences*/
+    extension.config(['$compileProvider', function ($compileProvider) {
+       $compileProvider.debugInfoEnabled(studio.getPreferences("commandPalette.debugMode") == true ? true : false);
+    }]);
 
   extension.controller('MainController', function ($scope, $http, $filter) {
+
+    /*SET USER PREFERENCES*/
+    $scope.toggleDebugMode = function(){
+      studio.setPreferences("commandPalette.debugMode", $scope.isEnabled);
+    }
+    $scope.value = studio.getPreferences("commandPalette.debugMode");
+    /***********/
+
     var data         = [];
     var currentItems = [];
     var txtInput = document.getElementById("queryInput");
@@ -44,7 +52,7 @@ var extension = angular.module('cmdPalette', ['ngSanitize']);
         exec(cmd);
     };
 
-
+if(txtInput)
    txtInput.onkeydown = function (event) {
 
         switch (event.keyIdentifier) {

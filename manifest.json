@@ -21,6 +21,13 @@
 					"shiftKey": "yes",
 					"key": "p"
 				}
+			},
+			{
+				"name": "initPreferences",
+				"title": "Init Preferences",
+				"trigger": [
+					{ "event": "onStudioStart" }
+				]
 			}
 		],
 		"lifetime": "application_lifetime"
