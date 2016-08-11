@@ -1,7 +1,7 @@
 {
 	"extension": {
 		"name": "Command Palette",
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"description": "Open the command palette instead of getting lost in the menu",
 		"icon": "icon.png",
 		"senders": [
